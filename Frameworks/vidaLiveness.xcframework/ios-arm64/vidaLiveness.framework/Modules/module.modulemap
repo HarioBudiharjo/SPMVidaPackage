@@ -1,0 +1,4 @@
+framework module vidaLiveness {
+  header "vidaLiveness-Swift.h"
+  requires objc
+}

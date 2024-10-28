@@ -1,0 +1,120 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name vidaLiveness
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import CommonCrypto
+import CoreGraphics
+import CoreImage
+import CoreMedia
+import CoreVideo
+import DeveloperToolsSupport
+import Foundation
+import ImageIO
+import LocalAuthentication
+import Security
+import Swift
+import SwiftUI
+import SystemConfiguration
+import UIKit
+import Vision
+import ZDefend
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc public enum OverlayShape : Swift.Int {
+  case circle, square, oval, rectangle
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class CTAConfig : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc public init(backgroundColor: UIKit.UIColor = UIColor(red: 0.35, green: 0.74, blue: 0.95, alpha: 1), textColor: UIKit.UIColor = UIColor.white, textFont: UIKit.UIFont? = UIFont(name: "HelveticaNeue-Bold", size: 15.0))
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class SDKUIComponentConfig : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc public init(tutorialScrBackgroundColor: UIKit.UIColor = UIColor.white, tutorialScrTextColor: UIKit.UIColor = UIColor.black, transactionIdBackgroundColor: UIKit.UIColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1), transactionIdTextColor: UIKit.UIColor = UIColor(red: 0.51, green: 0.51, blue: 0.51, alpha: 1), tutorialWarningTextColor: UIKit.UIColor = UIColor.black, tutorialWarningIconTextColor: UIKit.UIColor = UIColor(red: 0.49, green: 0.51, blue: 0.53, alpha: 1), tutorialInstructionTextColor: UIKit.UIColor = UIColor.black, cameraPermissionScrBackgroundColor: UIKit.UIColor = UIColor.white, cameraPermissionScrTextColor: UIKit.UIColor = UIColor.black, primaryCTAConfig: vidaLiveness.CTAConfig = CTAConfig(
+            backgroundColor: UIColor(red: 0.35, green: 0.74, blue: 0.95, alpha: 1),
+            textColor: UIColor.white,
+            textFont: UIFont(name: "HelveticaNeue-Bold", size: 15.0)
+        ), secondaryCTAConfig: vidaLiveness.CTAConfig = CTAConfig(
+            backgroundColor: UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1),
+            textColor: UIColor.black,
+            textFont: UIFont(name: "HelveticaNeue", size: 15.0)
+        ), cameraPreviewScrBackgroundColor: UIKit.UIColor = UIColor.white, overlayShape: vidaLiveness.OverlayShape = .oval, overlayBackgroundColor: UIKit.UIColor = UIColor(white: 0, alpha: 0.7), overlayBorderColor: UIKit.UIColor = UIColor.white, overlayBorderWidth: CoreFoundation.CGFloat = 10, strokeBorderColor: UIKit.UIColor = UIColor(red: 0.03, green: 1, blue: 0.72, alpha: 1), cameraMessageTextColor: UIKit.UIColor = UIColor.black, cameraMessageFont: UIKit.UIFont? = UIFont(name: "HelveticaNeue-Bold", size: 16.0), reviewScreenBackgroundColor: UIKit.UIColor = UIColor.white, reviewScreenTextColor: UIKit.UIColor = UIColor.black, reviewInstructionTextColor: UIKit.UIColor = UIColor(
+            red: 0.617,
+            green: 0.633,
+            blue: 0.667,
+            alpha: 1
+        ), reviewInstructionFont: UIKit.UIFont? = UIFont(name: "HelveticaNeue", size: 15.0), maxRetryAttempts: Swift.Int = 2, cameraPosition: AVFoundation.AVCaptureDevice.Position = .front, showBrandLogo: Swift.Bool = true)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class VIDAFaceDetectionOptions : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  public init(detectionTimeout: Swift.Int? = nil, minimumStableFrame: Swift.Int = 40, eyeOpenProbability: Swift.Float = 0.4, luminanceThreshold: Swift.Float = 0.6, enableActiveLiveness: ObjectiveC.ObjCBool = false, minimumIoUThreshold: Swift.Float = 0.65, zoomGestureMinimumStableFrame: Swift.Int = 20, allowedGestures: Swift.Set<vidaLiveness.GestureType> = Set([.zoomFace]))
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class VIDALiveness : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc public func initialize(vidaLivenessRequest: vidaLiveness.VIDALivenessRequest, sdkUIComponentConfig: vidaLiveness.SDKUIComponentConfig = SDKUIComponentConfig(), detectionOptions: vidaLiveness.VIDAFaceDetectionOptions = VIDAFaceDetectionOptions(), shouldShowTutorialFlow: Swift.Bool = true, shouldShowReviewScreen: Swift.Bool = true, languageCode: Swift.String? = nil, delegate: any vidaLiveness.VIDALivenessProtocol, presentNavigationController: UIKit.UINavigationController?)
+  @objc public func startDetection()
+  public func inputImageFrame()
+  public func stopDetection()
+  @objc public func releaseSDK()
+  public func getFrameworkVersion() -> Swift.String
+  @objc deinit
+}
+public enum GestureType : Swift.RawRepresentable, Swift.Comparable {
+  case blinkEyes
+  case smile
+  case shakeHead
+  case zoomFace
+  public typealias RawValue = vidaLiveness.GestureDetail
+  public var rawValue: vidaLiveness.GestureDetail {
+    get
+  }
+  public init?(rawValue: vidaLiveness.GestureDetail)
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func < (a: vidaLiveness.GestureType, b: vidaLiveness.GestureType) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct GestureDetail : Swift.Equatable {
+  public static func == (lhs: vidaLiveness.GestureDetail, rhs: vidaLiveness.GestureDetail) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers @objc public class VIDALivenessResponse : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var imageData: Foundation.Data?
+  @objc public var livenessScore: Swift.Double
+  @objc public var manipulationScore: Swift.Double
+  @objc public var errorDetails: Swift.String?
+  @objc public var sessionId: Swift.String?
+  @objc public var transactionId: Swift.String?
+  @objc public var additionalImages: [Foundation.Data]?
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc public class VIDALivenessRequest : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var apiKey: Swift.String?
+  @objc public var licenseKey: Swift.String?
+  @objc public var eKYCID: Swift.String?
+  @objc public var userInfo: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc public protocol VIDALivenessProtocol {
+  @objc func onSuccess(response: vidaLiveness.VIDALivenessResponse)
+  @objc func onError(errorCode: Swift.Int, errorMessage: Swift.String, response: vidaLiveness.VIDALivenessResponse)
+  @objc func onInitialized()
+}
+extension vidaLiveness.OverlayShape : Swift.Equatable {}
+extension vidaLiveness.OverlayShape : Swift.Hashable {}
+extension vidaLiveness.OverlayShape : Swift.RawRepresentable {}
+extension vidaLiveness.GestureType : Swift.Hashable {}
